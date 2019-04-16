@@ -16,13 +16,14 @@ class RehabsByCity extends Component {
 
     componentDidMount() {
         // get city, state param from url
-        const { state, city } = this.props.match.params;
+        const { state, city } = this.props;
+
 
         // start loading spinners
         this.setState({listingsLoading: true, citiesLoading: true});
 
         // axios call to samhsa api (get Listings in City)
-        axios.get(`https://cors-anywhere.herokuapp.com/http://api.thedrugbible.com/samhsa_api.php?type=city&state=${state.toLowerCase()}&city=${city.toLowerCase()}&rand=0&limit=20&area=250&types=all&categories=0`)
+        axios.get(`https://cors-anywhere.herokuapp.com/http://api.thedrugbible.com/samhsa_api.php?type=city&state=${state.toLowerCase()}&city=${encodeURIComponent(city.replace('-', ' ').toLowerCase())}&rand=0&limit=20&area=250&types=all&categories=0`)
             .then((listings) => {
                 this.setState({ listings: listings.data, listingsLoading: false });
             }).catch((error) => {
@@ -31,8 +32,9 @@ class RehabsByCity extends Component {
     }
 
     render(props) {
-        const { state, city } = this.props.match.params;
-        const uiCity = city.charAt(0).toUpperCase() + city.slice(1);
+        const { state, city } = this.props;
+        // uppercase city words
+        const uiCity = city.replace(/\b\w/g, l => l.toUpperCase());
         const { listings } = this.state;
         return (
             <React.Fragment>
@@ -43,7 +45,7 @@ class RehabsByCity extends Component {
                         <li className="breadcrumb-item active" aria-current="page">{uiCity}</li>
                     </ol>
                 </nav>
-                <h2 className="my-5">Substance Abuse Treatment Programs in {city}, {state.toUpperCase()}</h2>
+                <h2 className="my-5">Substance Abuse Treatment Programs in {uiCity}, {state.toUpperCase()}</h2>
 
                 {this.state.listingsLoading && <img src={loadingGif} alt="Loading..." />}
 

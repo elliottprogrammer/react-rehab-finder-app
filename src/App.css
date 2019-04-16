@@ -40,15 +40,6 @@ body {
     color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 span.icon-search img {
     height: 1.5rem;
     display: inline-block;
@@ -57,6 +48,10 @@ span.icon-search img {
 .zip-search .input-group {
     max-width: 500px;
     margin: auto;
+}
+
+.navbar-brand a {
+    color: #fff;
 }
 
 /* Listings */

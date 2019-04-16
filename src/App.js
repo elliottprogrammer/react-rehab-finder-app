@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import HomePage from './components/HomePage';
-import RehabsByState from './components/RehabsByState';
-import RehabsByCity from './components/RehabsByCity';
+import StatePage from './components/StatePage';
+import CityPage from './components/CityPage';
 
 class App extends Component {
 
@@ -13,7 +13,7 @@ class App extends Component {
                 <header className="App-header">
                     <div className="container">
                         <nav className="navbar navbar-dark bg-blue">
-                            <span className="navbar-brand mb-0 h1">Rehab Finder</span>
+                            <span className="navbar-brand mb-0 h1"><Link to="/">Rehab Finder</Link></span>
                         </nav>
                     </div>
                 </header>
@@ -21,8 +21,8 @@ class App extends Component {
                 <div className="container">
                     <Switch>
                         <Route exact path="/" component={HomePage} />
-                        <Route exact path="/rehabs/:state" component={RehabsByState} />
-                        <Route exact path="/rehabs/:state/:city" component={RehabsByCity} />
+                        <Route exact path="/rehabs/:state" component={StatePage} />
+                        <Route exact path="/rehabs/:state/:city" component={CityPage} />
                     </Switch>
                 </div>
             </div>

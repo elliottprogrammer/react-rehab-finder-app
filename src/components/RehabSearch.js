@@ -14,21 +14,25 @@ class RehabSearch extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        // get zip code from form
         const zip = e.target.zip_code.value;
+        // api call to get city & state from zip code.
         axios.get(`https://cors-anywhere.herokuapp.com/http://api.thedrugbible.com/samhsa_api.php?type=findzip&zip=${zip}`)
             .then((response) => {
+                // get city and state from response
                 const city = response.data[0].location_city.replace(' ', '-').toLowerCase();
                 const stabbr = response.data[0].location_state.toLowerCase();
+                // another api call to determine if there are listing results
                 axios.get(`https://cors-anywhere.herokuapp.com/http://api.thedrugbible.com/samhsa_api.php?type=city&state=${stabbr}&city=${city}&rand=0&limit=20&area=250&types=all&categories=0`)
                 .then((listings) => {
                     if(listings.data.errors) {
+                        // if no listings, show error
                         this.setState({error: 'I\'m sorry, we could not find any listings for that zip code. Please try another nearby zip code.'})
                     } else {
+                        // otherwise, redirect to valid city page.
                         this.setState({ city, stabbr, errors: '', redirectToCity: true });
-                    }
-                    
+                    }   
                 })
-                
             }).catch((error) => {
                 console.log(error);
             });

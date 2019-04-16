@@ -16,7 +16,7 @@ class RehabsByState extends Component {
 
 componentDidMount() {
     // get state param from url
-    const { state } = this.props.match.params;
+    const { state } = this.props;
 
     // start loading spinners
     this.setState({listingsLoading: true, citiesLoading: true});
@@ -40,7 +40,7 @@ componentDidMount() {
 }
 
     render() {
-        const { state } = this.props.match.params;
+        const { state } = this.props;
         const { listings, cities } = this.state;
         return (
             <React.Fragment>
