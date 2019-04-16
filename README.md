@@ -1,3 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Reah Finder App
 
-# react-rehab-finder-app
+Search rehab centers by U.S. states & cities, or by zip code.
+
+## Live Demo:
+
+[react-rehab-finder.elliottprogrammer.com](http://react-rehab-finder.elliottprogrammer.com/)
