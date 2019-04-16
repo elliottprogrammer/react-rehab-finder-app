@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import StateLinks from './components/StateLinks';
+import HomePage from './components/HomePage';
 import RehabsByState from './components/RehabsByState';
 import RehabsByCity from './components/RehabsByCity';
-import RehabSearch from './components/RehabSearch';
 
 class App extends Component {
 
@@ -18,10 +17,10 @@ class App extends Component {
                         </nav>
                     </div>
                 </header>
-                <RehabSearch />
+                
                 <div className="container">
                     <Switch>
-                        <Route exact path="/" component={StateLinks} />
+                        <Route exact path="/" component={HomePage} />
                         <Route exact path="/rehabs/:state" component={RehabsByState} />
                         <Route exact path="/rehabs/:state/:city" component={RehabsByCity} />
                     </Switch>

@@ -37,10 +37,10 @@ class RehabsByCity extends Component {
         return (
             <React.Fragment>
                 <nav aria-label="breadcrumb" className="mt-4">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><Link to="/">Home</Link></li>
-                        <li class="breadcrumb-item"><Link to={`/rehabs/${state.toLowerCase()}`}>{STATES[state.toUpperCase()]}</Link></li>
-                        <li class="breadcrumb-item active" aria-current="page">{uiCity}</li>
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                        <li className="breadcrumb-item"><Link to={`/rehabs/${state.toLowerCase()}`}>{STATES[state.toUpperCase()]}</Link></li>
+                        <li className="breadcrumb-item active" aria-current="page">{uiCity}</li>
                     </ol>
                 </nav>
                 <h2 className="my-5">Substance Abuse Treatment Programs in {city}, {state.toUpperCase()}</h2>

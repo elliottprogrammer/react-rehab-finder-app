@@ -133,9 +133,15 @@ span.icon-search img {
     border-radius: 5px;
 }
 
-.stateList {
+.state-list {
     position: absolute;
     width: 100%;
     top: 0;
     left: 0;
+}
+
+.location-list li > a {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    font-weight: 500;
 }
